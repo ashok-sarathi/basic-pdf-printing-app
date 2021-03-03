@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AppApi.Data
+namespace AppApi.Model
 {
     public class User
     {

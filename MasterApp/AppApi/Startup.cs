@@ -34,6 +34,17 @@ namespace AppApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppApi", Version = "v1" });
             });
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "AppCors",
+                                  builder =>
+                                  {
+                                      builder
+                                      .AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader();
+                                  });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +58,8 @@ namespace AppApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AppApi v1"));
             }
+
+            app.UseCors("AppCors");
 
             app.UseHttpsRedirection();
 

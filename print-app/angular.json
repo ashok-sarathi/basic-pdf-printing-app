@@ -146,5 +146,8 @@
       }
     }
   },
-  "defaultProject": "print-app"
+  "defaultProject": "print-app",
+  "cli": {
+    "analytics": false
+  }
 }
