@@ -13,12 +13,24 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  get(): Observable<User> {
-    return this.http.get<User>(environment.api + "user");
+  get(): Observable<User[]> {
+    return this.http.get<User[]>(environment.api + `user`);
   }
 
-  create(data: User): Observable<User> {
-    return this.http.post<User>(environment.api + "user", data);
+  getSingle(id: string): Observable<User> {
+    return this.http.get<User>(environment.api + `user/${id}`);
+  }
+
+  create(data: User): Observable<string> {
+    return this.http.post<string>(environment.api + `user`, data);
+  }
+
+  update(data: User): Observable<string> {
+    return this.http.put<string>(environment.api + `user`, data);
+  }
+
+  delete(id: string): Observable<string> {
+    return this.http.delete<string>(environment.api + `user/${id}`);
   }
 
 }
